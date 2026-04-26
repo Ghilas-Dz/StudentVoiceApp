@@ -1,0 +1,2 @@
+@import 'tailwindcss/utilities';
+@source '../**/*.{js,ts,jsx,tsx,vue}';

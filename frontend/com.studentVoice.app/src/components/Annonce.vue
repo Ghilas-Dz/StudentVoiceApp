@@ -1,0 +1,401 @@
+<template>
+  <div class="announcements-page flex flex-col gap-4">
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <div class="flex items-start gap-3">
+        <Bell class="w-6 h-6 text-blue-600 flex-shrink-0" />
+        <div>
+          <h3 class="font-semibold text-blue-900">Annonces Pédagogiques</h3>
+          <p class="text-sm text-blue-700 mt-1">
+            Les annonces sont publiées par l'administration, les professeurs et les délégués
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+  
+      <div class="flex flex-wrap gap-2">
+        <button
+          v-for="f in filterButtons"
+          :key="f.value"
+          @click="activeFilter = f.value"
+          class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all"
+          :style="{
+            background: activeFilter === f.value ? f.activeColor : f.bg,
+            color: activeFilter === f.value ? '#FFFFFF' : f.color,
+            boxShadow: activeFilter === f.value ? f.shadow : 'none',
+          }"
+        >
+          {{ f.label }}
+        </button>
+      </div>
+      <button
+        v-if="canPublish"
+        @click="showForm = !showForm"
+        class="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-white text-sm transition-all hover:opacity-90 active:scale-95 shadow-lg"
+        style="background: linear-gradient(135deg, #1f54d2 0%, #255fe3 50%, #1d3f95 100%); font-weight: 600"
+      >
+        <Plus class="w-3.5 h-3.5" />
+        Publier
+      </button>
+      <div v-else class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-500 rounded-lg cursor-not-allowed">
+        <Lock class="w-5 h-5" />
+        <span class="text-sm">Accès restreint</span>
+      </div>
+    </div>
+
+    <!-- Formulaire d'ajout -->
+    <div v-if="showForm && canPublish" class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-blue-100 dark:border-blue-900 shadow-lg shadow-blue-500/5 animate-slide-down">
+      <h3 class="text-sm mb-3 form-title">Nouvelle Annonce</h3>
+      <div class="grid grid-cols-1 gap-3 mb-3 sm:grid-cols-2">
+        <input v-model="form.titre" placeholder="Titre de l'annonce*" class="col-span-1 sm:col-span-2" />
+        <input v-model="form.cours" placeholder="Cours / Module" />
+        <CustomSelect
+          v-model="form.type"
+          :options="typeOptions"
+          placeholder="Type d'annonce"
+        />
+        <textarea v-model="form.contenu" placeholder="Contenu de l'annonce*" rows="3" class="col-span-2 resize-none"></textarea>
+      </div>
+      <div class="flex gap-2">
+        <button @click="addAnnonce" class="publish-btn px-4 py-2 rounded-xl text-sm transition-all hover:opacity-90 active:scale-95">Publier</button>
+        <button @click="showForm = false" class="cancel-btn px-4 py-2 rounded-xl text-sm">Annuler</button>
+      </div>
+    </div>
+
+    <!-- Information banner pour les utilisateurs sans permission -->
+    <div v-if="!canPublish" class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+      <h3 class="font-semibold text-orange-900">Publication d'Annonces</h3>
+      <p class="text-sm text-orange-700 mt-1">Seuls les délégués, professeurs et administrateurs peuvent créer et publier des annonces.</p>
+    </div>
+
+    <!-- Loading state -->
+    <div v-if="loading" class="flex flex-col gap-3">
+      <div v-for="n in 3" :key="n" class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-blue-100 dark:border-blue-900 animate-pulse">
+        <div class="space-y-3">
+          <div class="flex gap-2">
+            <div class="h-5 w-20 rounded-full bg-gray-200"></div>
+            <div class="h-5 w-16 rounded-full bg-gray-200"></div>
+          </div>
+          <div class="h-5 w-3/4 rounded bg-gray-200"></div>
+          <div class="h-4 w-full rounded bg-gray-100"></div>
+          <div class="h-4 w-2/3 rounded bg-gray-100"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div v-else-if="filteredAnnonces.length === 0" class="text-center py-12">
+      <Bell class="w-12 h-12 mx-auto mb-3 text-gray-300" />
+      <p class="text-sm text-gray-500">
+        {{ annonces.length === 0 ? 'Aucune annonce pour le moment.' : 'Aucune annonce dans cette catégorie.' }}
+      </p>
+    </div>
+
+    <div v-else class="flex flex-col gap-3">
+      <div
+        v-for="annonce in filteredAnnonces"
+        :key="annonce.id"
+        class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-blue-100 dark:border-blue-900 shadow-lg shadow-blue-500/5"
+      >
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2 flex-wrap">
+              <span
+                class="text-xs px-2.5 py-0.5 rounded-full font-semibold"
+                :style="typeStyleFor(annonce.type)"
+              >
+                {{ annonce.type }}
+              </span>
+              <span
+                class="text-xs px-2.5 py-0.5 rounded-full font-semibold"
+                :style="roleStyleFor(annonce.role)"
+              >
+                {{ annonce.role }}
+              </span>
+              <span v-if="annonce.cours && annonce.cours !== 'Général'" class="meta text-xs">
+                <BookOpen class="w-3 h-3 inline mr-1" />
+                {{ annonce.cours }}
+              </span>
+            </div>
+            <h3 class="text-base mb-1 form-title">
+              {{ annonce.titre }}
+            </h3>
+            <p class="text-sm leading-relaxed mb-3 content-text">
+              {{ annonce.contenu }}
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="meta flex items-center gap-1.5 text-xs">
+                <User class="w-3.5 h-3.5" />
+                {{ annonce.auteur }}
+              </div>
+              <div class="meta flex items-center gap-1.5 text-xs">
+                <Calendar class="w-3.5 h-3.5" />
+                {{ annonce.date }}
+              </div>
+            </div>
+          </div>
+          <button
+            v-if="allowReactions"
+            @click="handleVote(annonce.id)"
+            class="flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all flex-shrink-0"
+            :style="{
+              background: voted.has(annonce.id) ? '#4F5CF5' : '#F3F4FF',
+              color: voted.has(annonce.id) ? '#FFFFFF' : '#4F5CF5',
+            }"
+          >
+            <ThumbsUp class="w-4 h-4" />
+            <span class="text-xs" style="font-weight: 700">{{ voteCounts[annonce.id] }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, reactive, computed, onMounted } from 'vue';
+import { Bell, Plus, BookOpen, Calendar, User, ThumbsUp, Lock } from 'lucide-vue-next';
+import CustomSelect from './CustomSelect.vue'
+import { createAnnonce, listAnnonces, invalidateAnnoncesCache, voteAnnonce } from '../composables/useAnnonces'
+
+// Props pour contrôler qui peut publier et réagir
+const props = defineProps({
+  allowReactions: {
+    type: Boolean,
+    default: false, // Par défaut, pas de réactions
+  },
+  canPublish: {
+    type: Boolean,
+    default: false, // Par défaut, pas de publication
+  },
+});
+
+const activeFilter = ref('Toutes');
+const loading = ref(true);
+
+// ─── Type options for the form ───────────────────
+const typeOptions = ref([
+  { value: 'Pédagogique', label: 'Pédagogique' },
+  { value: 'Administrative', label: 'Administrative' },
+  { value: 'Événement', label: 'Événement' },
+])
+
+// ─── Filter buttons ──────────────────────────────
+const filterButtons = ref([
+  { value: 'Toutes', label: 'Toutes', color: '#255fe3', bg: '#DEE2F0', activeColor: '#255fe3', shadow: '0 2px 8px rgba(37,95,227,0.25)' },
+  { value: 'Pédagogique', label: 'Pédagogique', color: '#4F5CF5', bg: '#F3F4FF', activeColor: '#4F5CF5', shadow: '0 2px 8px rgba(79,92,245,0.25)' },
+  { value: 'Administrative', label: 'Administrative', color: '#CA8A04', bg: '#FEF9C3', activeColor: '#CA8A04', shadow: '0 2px 8px rgba(202,138,4,0.25)' },
+  { value: 'Événement', label: 'Événement', color: '#16A34A', bg: '#DCFCE7', activeColor: '#16A34A', shadow: '0 2px 8px rgba(22,163,74,0.25)' },
+])
+
+// ─── Normalize type for comparison ───────────────
+function normalizeType(value) {
+  if (!value) return ''
+  const raw = String(value).trim().toLowerCase()
+  const normalized = raw.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+
+  if (normalized === 'pedagogique' || normalized === 'cours' || normalized === 'course') return 'Pédagogique'
+  if (normalized === 'administrative' || normalized === 'admin') return 'Administrative'
+  if (normalized === 'evenement' || normalized === 'evenements' || normalized === 'event' || normalized === 'events') return 'Événement'
+
+  // Return the original value with proper capitalization if no match
+  return String(value).trim()
+}
+
+onMounted(async () => {
+  await loadAnnonces()
+})
+
+const annonces = ref([])
+
+// ─── Type badge styles ───────────────────────────
+const typeStyles = {
+  'Pédagogique': { background: '#EEF2FF', color: '#4F46E5' },
+  'Administrative': { background: '#FEF9C3', color: '#A16207' },
+  'Événement': { background: '#DCFCE7', color: '#15803D' },
+}
+
+// ─── Role badge styles ───────────────────────────
+const roleStyles = {
+  'Professeur': { background: '#FEF3C7', color: '#B45309' },
+  'Admin': { background: '#FEE2E2', color: '#DC2626' },
+  'Délégué': { background: '#EDE9FE', color: '#7C3AED' },
+  'Étudiant': { background: '#E0F2FE', color: '#0369A1' },
+}
+
+const voted = ref(new Set());
+const voteCounts = reactive({})
+
+const filteredAnnonces = computed(() => {
+  if (activeFilter.value === 'Toutes') {
+    return annonces.value;
+  }
+  return annonces.value.filter(a => normalizeType(a.type) === activeFilter.value);
+});
+
+async function loadAnnonces() {
+  loading.value = true
+  try {
+    const res = await listAnnonces(true)
+    if (res && res.data) {
+      annonces.value = res.data.map(a => ({
+        id: a.id,
+        titre: a.titre_annonce,
+        contenu: a.contenu_annonce,
+        date: a.date_publication_annonce ? new Date(a.date_publication_annonce).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) : '',
+        auteur: a.auteur || 'Inconnu',
+        role: a.role_auteur || 'Inconnu',
+        cours: a.cours || 'Général',
+        type: normalizeType(a.type_annonce) || 'Pédagogique',
+        likes: a.like_annonce || 0,
+      }))
+
+      // init vote counts
+      annonces.value.forEach(a => { voteCounts[a.id] = a.likes || 0 })
+    }
+  } catch (err) {
+    console.error('Erreur chargement annonces', err)
+    if (err && err.status === 401) {
+      alert('Non autorisé — votre session a peut-être expiré. Veuillez vous reconnecter.')
+    }
+  } finally {
+    loading.value = false
+  }
+}
+
+const showForm = ref(false);
+const form = reactive({
+  titre: '',
+  cours: '',
+  type: 'Pédagogique',
+  contenu: '',
+});
+
+const addAnnonce = async () => {
+  if (!form.titre || !form.contenu) return;
+  try {
+    const payload = {
+      titre_annonce: form.titre,
+      contenu_annonce: form.contenu,
+      cours: form.cours,
+      type_annonce: form.type,
+    }
+    const res = await createAnnonce({ annonce: payload })
+    if (res && res.data) {
+      const a = res.data
+      const item = {
+        id: a.id,
+        titre: a.titre_annonce,
+        contenu: a.contenu_annonce,
+        date: a.date_publication_annonce ? new Date(a.date_publication_annonce).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) : '',
+        auteur: a.auteur || 'Inconnu',
+        role: a.role_auteur || 'Inconnu',
+        cours: a.cours || form.cours || 'Général',
+        type: normalizeType(a.type_annonce) || form.type,
+        likes: a.like_annonce || 0,
+      }
+      annonces.value.unshift(item)
+      voteCounts[item.id] = item.likes || 0
+      // reset form
+      form.titre = '';
+      form.cours = '';
+      form.type = 'Pédagogique';
+      form.contenu = '';
+      showForm.value = false;
+      // invalidate and reload to keep cache consistent
+      invalidateAnnoncesCache()
+      await loadAnnonces()
+      return
+    }
+  } catch (err) {
+    console.error('Erreur création annonce', err)
+    const msg = (err && (err.message || err.error)) || 'Impossible de publier l\'annonce'
+    alert(msg)
+  }
+}
+
+const handleVote = async (id) => {
+  try {
+    const already = voted.value.has(id)
+    const voteType = already ? 'unlike' : 'like'
+    const res = await voteAnnonce(id, voteType)
+
+    if (res && res.data) {
+      voteCounts[id] = res.data.like_annonce || 0
+      if (already) {
+        const newVoted = new Set([...voted.value])
+        newVoted.delete(id)
+        voted.value = newVoted
+      } else {
+        voted.value = new Set([...voted.value, id])
+      }
+      return
+    }
+
+    // fallback optimistic update
+    if (already) {
+      const newVoted = new Set([...voted.value])
+      newVoted.delete(id)
+      voted.value = newVoted
+      voteCounts[id] = Math.max((voteCounts[id] || 0) - 1, 0)
+    } else {
+      voted.value = new Set([...voted.value, id])
+      voteCounts[id] = (voteCounts[id] || 0) + 1
+    }
+  } catch (err) {
+    console.error('Erreur vote annonce', err)
+  }
+};
+
+function typeStyleFor(t) {
+  const normalized = normalizeType(t)
+  const s = typeStyles[normalized]
+  if (s) return { background: s.background, color: s.color, fontWeight: 600 }
+  return { background: '#F3F4F6', color: '#6B7280', fontWeight: 600 }
+}
+
+function roleStyleFor(r) {
+  const s = roleStyles[r]
+  if (s) return { background: s.background, color: s.color, fontWeight: 600 }
+  return { background: '#F3F4F6', color: '#6B7280', fontWeight: 600 }
+}
+</script>
+
+<style scoped>
+.banner-subtitle,
+.meta,
+.content-text {
+  color: var(--muted-foreground);
+}
+
+.surface-card {
+  background: var(--card);
+  box-shadow: 0 2px 12px var(--shadow-neutral-soft);
+}
+
+.form-title {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.publish-btn {
+  background: linear-gradient(135deg, #1f54d2 0%, #255fe3 50%, #1d3f95 100%);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.cancel-btn {
+  background: #f3f4f6;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+</style>

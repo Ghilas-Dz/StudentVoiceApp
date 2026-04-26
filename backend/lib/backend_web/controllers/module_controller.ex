@@ -1,0 +1,193 @@
+defmodule BackendWeb.ModuleController do
+  use BackendWeb, :controller
+
+  import Ecto.Query, warn: false
+
+  alias Backend.Accounts
+  alias Backend.Academics
+  alias Backend.Academics.Enseigner
+  alias Backend.Repo
+
+  action_fallback(BackendWeb.FallbackController)
+
+  def progress_for_student(conn, _params) do
+    current = conn.assigns.account
+
+    with etudiant when not is_nil(etudiant) <- Accounts.get_etudiant_by_utilisateur_id(current.id),
+         etudiant <- Repo.preload(etudiant, groupe: [modules: [professeurs: :utilisateur]]),
+         groupe when not is_nil(groupe) <- etudiant.groupe do
+      # For each module, fetch the professor assignments to get progress data
+      modules =
+        Enum.map(groupe.modules, fn module ->
+          # Get the first professor assignment for this module (for progress calculation)
+          assignment =
+            from(e in Enseigner,
+              where: e.module_id == ^module.id,
+              order_by: [desc: e.inserted_at],
+              limit: 1
+            )
+            |> Repo.one()
+
+          # Get professor names from the module's professeurs relationship
+          professor_names =
+            if Ecto.assoc_loaded?(module.professeurs) do
+              module.professeurs
+              |> Enum.map(fn prof -> prof.utilisateur.nom_utilisateurs end)
+              |> Enum.join(", ")
+            else
+              ""
+            end
+
+          # Load chapters for this module
+          chapters = Academics.list_chapters_for_module(module.id)
+
+          today = Date.utc_today()
+
+          chapter_list =
+            Enum.map(chapters, fn ch ->
+              %{
+                id: ch.id,
+                title: ch.title,
+                date: ch.date,
+                completed: ch.date != nil && Date.compare(ch.date, today) != :gt
+              }
+            end)
+
+          %{
+            id: module.id,
+            code_cours: module.code_cours,
+            intitule_cours: module.intitule_cours,
+            semestre_module: module.semestre_module,
+            credits_module: module.credits_module,
+            description_module: module.description_module,
+            avancement_pourcentage: module.avancement_pourcentage || 0,
+            professor: professor_names,
+            chapters: chapter_list,
+            nextClass:
+              if assignment && assignment.date_debut_enseigner do
+                assignment.date_debut_enseigner |> to_string()
+              else
+                ""
+              end
+          }
+        end)
+
+      json(conn, %{data: modules})
+    else
+      nil -> {:error, "Profil etudiant ou groupe introuvable"}
+    end
+  end
+
+  def professeur_progress(conn, _params) do
+    current = conn.assigns.account
+
+    with professeur when not is_nil(professeur) <-
+           Accounts.get_professeur_by_utilisateur_id(current.id) do
+      rows =
+        from(e in Enseigner,
+          where: e.professeur_id == ^professeur.id,
+          preload: [:module],
+          order_by: [desc: e.inserted_at]
+        )
+        |> Repo.all()
+
+      data =
+        Enum.map(rows, fn row ->
+          %{
+            assignment_id: row.id,
+            module: module_payload(row.module),
+            annee_academique_enseigner: row.annee_academique_enseigner,
+            semestre_enseigner: row.semestre_enseigner,
+            date_debut_enseigner: row.date_debut_enseigner,
+            date_fin_enseigner: row.date_fin_enseigner,
+            avancement_pourcentage: row.module.avancement_pourcentage || 0
+          }
+        end)
+
+      json(conn, %{data: data})
+    else
+      nil -> {:error, "Profil professeur introuvable"}
+    end
+  end
+
+  def update_course_progress(conn, %{"module_id" => id, "progress" => progress_params}) do
+    module = Academics.get_module!(id)
+    attrs = Map.take(progress_params, ["description_module", "semestre_module", "credits_module", "avancement_pourcentage"])
+
+    with {:ok, updated_module} <- Academics.update_module(module, attrs) do
+      json(conn, %{
+        data: module_payload(updated_module),
+        message: "Avancement du cours mis a jour"
+      })
+    end
+  end
+
+  def create(conn, module_params) do
+    current = conn.assigns.account
+
+    with professeur when not is_nil(professeur) <-
+           Accounts.get_professeur_by_utilisateur_id(current.id) do
+      today = Date.utc_today()
+      end_date = Date.add(today, 120)
+
+      cleaned_params =
+        module_params
+        |> Map.put_new("semestre_module", "S1")
+        |> Map.put_new("credits_module", 0)
+        |> normalize_module_defaults()
+
+      Repo.transaction(fn ->
+        with {:ok, module} <- Academics.create_module(cleaned_params),
+             {:ok, _assignment} <-
+               Academics.create_enseigner(%{
+                 professeur_id: professeur.id,
+                 module_id: module.id,
+                 annee_academique_enseigner: "#{today.year}-#{today.year + 1}",
+                 semestre_enseigner: Map.get(cleaned_params, "semestre_module", "S1"),
+                 date_debut_enseigner: today,
+                 date_fin_enseigner: end_date
+               }) do
+          module
+        else
+          {:error, changeset} -> Repo.rollback(changeset)
+        end
+      end)
+      |> case do
+        {:ok, module} ->
+          json(conn, %{data: module_payload(module), message: "Module créé avec succès"})
+
+        {:error, reason} ->
+          {:error, reason}
+      end
+    else
+      nil -> {:error, "Profil professeur introuvable"}
+    end
+  end
+
+  defp normalize_module_defaults(params) do
+    params
+    |> maybe_put_if_blank("semestre_module", "S1")
+    |> maybe_put_if_blank("credits_module", 0)
+  end
+
+  defp maybe_put_if_blank(params, key, default) do
+    case Map.get(params, key) do
+      nil -> Map.put(params, key, default)
+      "" -> Map.put(params, key, default)
+      _ -> params
+    end
+  end
+
+  defp module_payload(module) do
+    %{
+      id: module.id,
+      code_cours: module.code_cours,
+      intitule_cours: module.intitule_cours,
+      semestre_module: module.semestre_module,
+      credits_module: module.credits_module,
+      description_module: module.description_module,
+      avancement_pourcentage: module.avancement_pourcentage
+    }
+  end
+
+end

@@ -1,0 +1,214 @@
+/* Base Theme Configuration - Premium Unified System */
+
+:root {
+  /* Dimensions & Base */
+  --font-size: 16px;
+  --radius: 0.85rem;
+  
+  /* Core Palette (Light Theme) */
+  --background: oklch(0.99 0.01 250); /* #f8f9fc slightly cool off-white */
+  --foreground: oklch(0.15 0.03 250); /* #0f172a dark slate text */
+  --card: #ffffff;
+  --card-foreground: oklch(0.15 0.03 250);
+  --popover: #ffffff;
+  --popover-foreground: oklch(0.15 0.03 250);
+  
+  /* Brand Strategy (Indigo Base) */
+  --primary: #0c00f9; /* Indigo-600 */
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.96 0.01 250); /* #f1f5f9 */
+  --secondary-foreground: oklch(0.15 0.03 250);
+  
+  /* UI States */
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.5 0.02 250); /* #64748b */
+  --accent: oklch(0.96 0.01 250);
+  --accent-foreground: oklch(0.15 0.03 250);
+  --destructive: oklch(0.6 0.2 25); /* Rich red */
+  --destructive-foreground: #ffffff;
+  
+  /* Forms & Borders */
+  --border: rgba(15, 23, 42, 0.08);
+  --input: #ffffff;
+  --input-background: #ffffff;
+  --ring: oklch(0.6 0.2 260); /* Brand ring */
+  --switch-background: oklch(0.85 0.01 250); /* #cbd5e1 */
+
+  /* Legacy & Brand Utils Aliases */
+  --blue: #3a3dfc;       /* équivalent oklch(0.6 0.2 260) */
+  --blue-dark: #060080;  /* équivalent oklch(0.5 0.2 260) */
+  --blue-deep: #1f13c5; 
+  --text-primary: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+  --bg-primary: var(--background);
+  --bg-secondary: var(--secondary);
+  --bg-tertiary: oklch(0.94 0.01 250);
+
+  /* Premium Ombres (Subtle & Layered) */
+  --shadow-brand: rgba(79, 70, 229, 0.15);
+  --shadow-success: rgba(34, 197, 94, 0.1);
+  --shadow-danger: rgba(239, 68, 68, 0.1);
+  --shadow-neutral: rgba(15, 23, 42, 0.04);
+  
+  /* Modern Chart Colors */
+  --chart-1: oklch(0.6 0.2 260);     /* Indigo */
+  --chart-2: oklch(0.65 0.2 180);    /* Teal */
+  --chart-3: oklch(0.7 0.15 60);     /* Amber */
+  --chart-4: oklch(0.6 0.2 300);     /* Fuchsia */
+  --chart-5: oklch(0.65 0.2 30);     /* Coral */
+  
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: oklch(0.2 0.03 250);
+  --sidebar-primary: #0c00f9;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: oklch(0.96 0.01 250);
+  --sidebar-accent-foreground: oklch(0.2 0.03 250);
+  --sidebar-border: rgba(15, 23, 42, 0.05);
+  --sidebar-ring: oklch(0.6 0.2 260);
+  
+  color-scheme: light;
+}
+
+.dark, [data-theme='dark'], html.dark {
+  /* Core Palette (Dark Theme) */
+  --background: #05070F; /* Quasi noir avec micro teinte bleue */
+  --foreground: oklch(0.97 0.005 240); /* Blanc légèrement froid */
+  --card: #0D1120; /* Surface cards plus profonde */
+  --card-foreground: oklch(0.97 0.005 240);
+  --popover: #0D1120;
+  --popover-foreground: oklch(0.97 0.005 240);
+
+    --hover: rgba(59, 82, 255, 0.12); /* subtil mais visible */
+   --hover-strong: rgba(59, 82, 255, 0.20); /* pour boutons importants */
+
+  /* Brand Contrast */
+  --primary: #3b52ff; /* Indigo vif */
+  --primary-foreground: #05070F;
+  --secondary: #111827; /* Presque noir, teinte bleue */
+  --secondary-foreground: oklch(0.97 0.005 240);
+
+  /* UI States */
+  --muted: #111827;
+  --muted-foreground: #64748b; /* Slate 500, plus foncé qu'avant */
+  --accent: #111827;
+  --accent-foreground: oklch(0.97 0.005 240);
+  --destructive: #f87171;
+  --destructive-foreground: #450a0a;
+
+  /* Forms & Borders */
+  --border: rgba(255, 255, 255, 0.05); /* Plus subtil */
+  --input: #0D1120;
+  --input-background: rgba(255, 255, 255, 0.02);
+  --switch-background: #1e293b;
+  --ring: #3b52ff;
+
+  /* Legacy & Aliases Override */
+  --text-primary: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+  --bg-primary: var(--background);
+  --bg-secondary: var(--card);
+  --bg-tertiary: var(--secondary);
+  --surface-card: var(--card);
+
+  /* Ombres (Mode Sombre) */
+  --shadow-brand: rgba(99, 120, 255, 0.2);
+  --shadow-success: rgba(74, 222, 128, 0.12);
+  --shadow-danger: rgba(248, 113, 113, 0.12);
+  --shadow-neutral: rgba(0, 0, 0, 0.7); /* Plus dense */
+
+  /* Adjusted Dark Chart Colors */
+  --chart-1: oklch(0.65 0.22 260);
+  --chart-2: oklch(0.70 0.2 180);
+  --chart-3: oklch(0.75 0.15 60);
+  --chart-4: oklch(0.65 0.22 300);
+  --chart-5: oklch(0.70 0.2 30);
+
+  /* Sidebar Override */
+  --sidebar: #05070F;
+  --sidebar-foreground: oklch(0.97 0.005 240);
+  --sidebar-primary: #6d7fff; /* Indigo clair pour contraste sidebar */
+  --sidebar-primary-foreground: #05070F;
+  --sidebar-accent: #111827;
+  --sidebar-accent-foreground: oklch(0.97 0.005 240);
+  --sidebar-border: rgba(255, 255, 255, 0.04);
+  --sidebar-ring: #6d7fff;
+
+  color-scheme: dark;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 { @apply text-2xl font-bold tracking-tight; }
+  h2 { @apply text-xl font-semibold tracking-tight; }
+  h3 { @apply text-lg font-semibold; }
+
+  label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+
+  button { @apply transition-all cursor-pointer; }
+  input { @apply outline-none transition-all; }
+}
+
+/* Global Fixes for Theme Consistency */
+html.dark .bg-white { background-color: var(--card) !important; }
+html.dark .text-gray-900 { color: var(--foreground) !important; }
+html.dark .text-gray-600, 
+html.dark .text-gray-500 { color: var(--muted-foreground) !important; }
+html.dark .bg-gray-50, 
+html.dark .bg-gray-100 { background-color: var(--secondary) !important; }
+html.dark .border-gray-200 { border-color: var(--border) !important; }

@@ -1,0 +1,186 @@
+@import './common/tailwind.css';
+@import './common/theme.css';
+@import './common/fonts.css';
+
+/* ----------------------------------------- */
+/* 💫 Premium Animations                     */
+/* ----------------------------------------- */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------- */
+/* 💎 Modern & Tactile Components            */
+/* ----------------------------------------- */
+@layer components {
+
+  /* Base button styling with spring effect */
+  button {
+    @apply transition-all duration-300;
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Spring bounce */
+  }
+
+  /* 📝 Base Form Inputs & Textareas */
+  input,
+  textarea {
+    @apply w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-slate-400 dark:text-slate-400;
+  }
+
+  input:hover,
+  textarea:hover {
+    @apply border-gray-300 dark:border-slate-600;
+  }
+
+  /* ✨ Primary & Gradient Buttons */
+  button[style*="background: linear-gradient"] {
+    @apply relative overflow-hidden;
+    /* Richer drop shadow + nice inner highlight for 3D effect */
+    box-shadow: 0 4px 14px -2px rgba(37, 95, 227, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+  }
+
+  /* Solid Indigo becomes a subtle gradient */
+  button.bg-indigo-600 {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 14px -2px rgba(79, 70, 229, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+  }
+
+  /* 🌿 Success / Green Buttons */
+  button.bg-green-100 {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #166534 !important;
+    box-shadow: 0 3px 8px -2px rgba(34, 197, 94, 0.25) !important;
+  }
+
+  /* 🚨 Danger / Red Buttons */
+  button.bg-red-100 {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #991b1b !important;
+    box-shadow: 0 3px 8px -2px rgba(239, 68, 68, 0.25) !important;
+  }
+
+  /* ☁️ Neutral / Gray Buttons with Glassmorphism hint */
+  button.bg-gray-100 {
+    background: rgba(243, 244, 246, 0.8) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(229, 231, 235, 1);
+    color: #374151 !important;
+    box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  button.bg-gray-200 {
+    background: rgba(229, 231, 235, 0.8) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(209, 213, 219, 1);
+    box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.08) !important;
+  }
+}
+
+/* ----------------------------------------- */
+/* 🖱️ Interactive States (Hover/Active)     */
+/* ----------------------------------------- */
+
+/* Primary & Gradient Hover */
+button[style*="background: linear-gradient"]:hover,
+button.bg-indigo-600:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 24px -4px rgba(79, 70, 229, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+  filter: brightness(1.05);
+  /* Slight glow */
+}
+
+/* Primary & Gradient Active */
+button[style*="background: linear-gradient"]:active,
+button.bg-indigo-600:active {
+  transform: translateY(1px) scale(0.96);
+  box-shadow: 0 2px 6px -2px rgba(79, 70, 229, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  filter: brightness(0.95);
+}
+
+/* Green Hover/Active */
+button.bg-green-100:hover {
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 12px 20px -3px rgba(34, 197, 94, 0.25) !important;
+}
+
+button.bg-green-100:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 2px 5px -1px rgba(34, 197, 94, 0.2) !important;
+}
+
+/* Red Hover/Active */
+button.bg-red-100:hover {
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 12px 20px -3px rgba(239, 68, 68, 0.25) !important;
+}
+
+button.bg-red-100:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 2px 5px -1px rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Gray Hover/Active */
+button.bg-gray-100:hover,
+button.bg-gray-200:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 16px -3px rgba(0, 0, 0, 0.08) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(209, 213, 219, 0.8);
+}
+
+button.bg-gray-100:active,
+button.bg-gray-200:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.05) !important;
+  background: rgba(229, 231, 235, 0.9) !important;
+}
+
+/* Icon Buttons specifically */
+button.p-2:hover {
+  transform: scale(1.15) rotate(4deg);
+  background-color: rgba(99, 102, 241, 0.08);
+  /* slight indigo tint */
+}
+
+button.p-2:active {
+  transform: scale(0.9) rotate(-5deg);
+}
+
+html.dark button.bg-gray-100:hover,
+html.dark button.bg-gray-200:hover {
+  background: rgba(59, 82, 255, 0.12) !important;
+  /* bleu subtil */
+  border-color: rgba(59, 82, 255, 0.25);
+  box-shadow: 0 8px 20px -4px rgba(59, 82, 255, 0.25) !important;
+}

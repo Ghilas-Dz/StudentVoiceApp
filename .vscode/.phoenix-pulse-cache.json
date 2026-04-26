@@ -1,0 +1,1613 @@
+{
+  "version": "1.0.0",
+  "timestamp": 1777238267200,
+  "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team",
+  "registries": {
+    "components": {
+      "components": [
+        [
+          "__phoenix_builtins__",
+          [
+            {
+              "name": "link",
+              "moduleName": "Phoenix.Component",
+              "filePath": "c:\\Users\\pc\\.vscode\\extensions\\onsever.phoenix-pulse-1.3.0\\node_modules\\@phoenix-pulse\\language-server\\resources\\phoenix_component_builtins.ex",
+              "line": 1,
+              "doc": "Phoenix.Component.link/1 – Generates an anchor tag that supports LiveView-aware navigation.",
+              "attributes": [
+                {
+                  "name": "navigate",
+                  "type": "string",
+                  "required": false,
+                  "doc": "Use VerifiedRoutes: `navigate={~p\"/path\"}`"
+                },
+                {
+                  "name": "patch",
+                  "type": "string",
+                  "required": false,
+                  "doc": "Use VerifiedRoutes: `patch={~p\"/path\"}`"
+                },
+                {
+                  "name": "href",
+                  "type": "string",
+                  "required": false,
+                  "doc": "External/legacy target. Prefer `navigate`/`patch` with VerifiedRoutes."
+                },
+                {
+                  "name": "method",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "class",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "replace",
+                  "type": "boolean",
+                  "required": false
+                }
+              ],
+              "slots": [
+                {
+                  "name": "inner_block",
+                  "required": true,
+                  "attributes": []
+                }
+              ]
+            },
+            {
+              "name": "live_patch",
+              "moduleName": "Phoenix.Component",
+              "filePath": "c:\\Users\\pc\\.vscode\\extensions\\onsever.phoenix-pulse-1.3.0\\node_modules\\@phoenix-pulse\\language-server\\resources\\phoenix_component_builtins.ex",
+              "line": 1,
+              "doc": "Phoenix.Component.live_patch/1 – Generates a patch navigation link within the same LiveView.",
+              "attributes": [
+                {
+                  "name": "patch",
+                  "type": "string",
+                  "required": true,
+                  "doc": "Use VerifiedRoutes: `patch={~p\"/path\"}`"
+                },
+                {
+                  "name": "class",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "replace",
+                  "type": "boolean",
+                  "required": false
+                }
+              ],
+              "slots": [
+                {
+                  "name": "inner_block",
+                  "required": true,
+                  "attributes": []
+                }
+              ]
+            },
+            {
+              "name": "live_redirect",
+              "moduleName": "Phoenix.Component",
+              "filePath": "c:\\Users\\pc\\.vscode\\extensions\\onsever.phoenix-pulse-1.3.0\\node_modules\\@phoenix-pulse\\language-server\\resources\\phoenix_component_builtins.ex",
+              "line": 1,
+              "doc": "Phoenix.Component.live_redirect/1 – Generates a redirect navigation link to another LiveView or controller.",
+              "attributes": [
+                {
+                  "name": "navigate",
+                  "type": "string",
+                  "required": true,
+                  "doc": "Use VerifiedRoutes: `navigate={~p\"/path\"}`"
+                },
+                {
+                  "name": "class",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "replace",
+                  "type": "boolean",
+                  "required": false
+                }
+              ],
+              "slots": [
+                {
+                  "name": "inner_block",
+                  "required": true,
+                  "attributes": []
+                }
+              ]
+            },
+            {
+              "name": "live_component",
+              "moduleName": "Phoenix.Component",
+              "filePath": "c:\\Users\\pc\\.vscode\\extensions\\onsever.phoenix-pulse-1.3.0\\node_modules\\@phoenix-pulse\\language-server\\resources\\phoenix_component_builtins.ex",
+              "line": 1,
+              "doc": "Phoenix.Component.live_component/1 – Embeds a stateful LiveComponent from HEEx.",
+              "attributes": [
+                {
+                  "name": "module",
+                  "type": "module",
+                  "required": true,
+                  "doc": "LiveComponent module (e.g., `module={MyAppWeb.ModalComponent}`)."
+                },
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": ":for",
+                  "type": "any",
+                  "required": false
+                },
+                {
+                  "name": ":let",
+                  "type": "any",
+                  "required": false
+                }
+              ],
+              "slots": [
+                {
+                  "name": "inner_block",
+                  "required": false,
+                  "attributes": []
+                }
+              ]
+            },
+            {
+              "name": "form",
+              "moduleName": "Phoenix.Component",
+              "filePath": "c:\\Users\\pc\\.vscode\\extensions\\onsever.phoenix-pulse-1.3.0\\node_modules\\@phoenix-pulse\\language-server\\resources\\phoenix_component_builtins.ex",
+              "line": 1,
+              "doc": "Phoenix.Component.form/1 – Renders a HEEx form with support for :let assigns and action attributes.",
+              "attributes": [
+                {
+                  "name": "for",
+                  "type": "any",
+                  "required": true
+                },
+                {
+                  "name": "as",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "action",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "method",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "phx-submit",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "phx-change",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": ":let",
+                  "type": "any",
+                  "required": false
+                }
+              ],
+              "slots": [
+                {
+                  "name": "inner_block",
+                  "required": true,
+                  "attributes": []
+                },
+                {
+                  "name": "actions",
+                  "required": false,
+                  "attributes": []
+                }
+              ]
+            },
+            {
+              "name": "inputs_for",
+              "moduleName": "Phoenix.Component",
+              "filePath": "c:\\Users\\pc\\.vscode\\extensions\\onsever.phoenix-pulse-1.3.0\\node_modules\\@phoenix-pulse\\language-server\\resources\\phoenix_component_builtins.ex",
+              "line": 1,
+              "doc": "Phoenix.Component.inputs_for/1 – Iterates nested inputs for associations or embeds within a parent form.",
+              "attributes": [
+                {
+                  "name": "field",
+                  "type": "any",
+                  "required": true,
+                  "doc": "Form field or association (e.g., `field={f[:addresses]}`)."
+                },
+                {
+                  "name": ":let",
+                  "type": "any",
+                  "required": true,
+                  "doc": "Binding for the nested form (e.g., `:let={address_form}`)."
+                },
+                {
+                  "name": "for",
+                  "type": "any",
+                  "required": false,
+                  "doc": "Explicit changeset/source for the nested inputs."
+                }
+              ],
+              "slots": [
+                {
+                  "name": "inner_block",
+                  "required": true,
+                  "attributes": []
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex",
+          []
+        ]
+      ],
+      "fileHashes": {
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex": "8d0982dc02c65deab3408b4bb0591a7003313cbd"
+      },
+      "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
+    },
+    "schemas": {
+      "schemas": [
+        [
+          "Backend.Academics.Chapter",
+          {
+            "moduleName": "Backend.Academics.Chapter",
+            "tableName": "chapter",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\chapter.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Academics.Enseigner",
+          {
+            "moduleName": "Backend.Academics.Enseigner",
+            "tableName": "enseigner",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\enseigner.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Academics.Grade",
+          {
+            "moduleName": "Backend.Academics.Grade",
+            "tableName": "grades",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\grade.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Academics.Groupe",
+          {
+            "moduleName": "Backend.Academics.Groupe",
+            "tableName": "groupes",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "code_groupes",
+                "type": "string"
+              },
+              {
+                "name": "libele_groupes",
+                "type": "string"
+              },
+              {
+                "name": "annee_academique_groupes",
+                "type": "string"
+              },
+              {
+                "name": "filier_groupe",
+                "type": "string"
+              },
+              {
+                "name": "niveau_groupe",
+                "type": "string"
+              },
+              {
+                "name": "etudiants",
+                "type": "list",
+                "elixirType": "Backend.Accounts.Etudiant"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\groupe.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Academics.Module",
+          {
+            "moduleName": "Backend.Academics.Module",
+            "tableName": "module",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\module.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Accounts.Administration",
+          {
+            "moduleName": "Backend.Accounts.Administration",
+            "tableName": "administration",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\administration.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Accounts.Etudiant",
+          {
+            "moduleName": "Backend.Accounts.Etudiant",
+            "tableName": "etudiants",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\etudiant.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Accounts.Professeur",
+          {
+            "moduleName": "Backend.Accounts.Professeur",
+            "tableName": "professeurs",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\professeur.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Accounts.Role",
+          {
+            "moduleName": "Backend.Accounts.Role",
+            "tableName": "roles",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\role.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Accounts.Utilisateur",
+          {
+            "moduleName": "Backend.Accounts.Utilisateur",
+            "tableName": "utilisateurs",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\utilisateur.ex",
+            "line": 13
+          }
+        ],
+        [
+          "Backend.Communication.Annonce",
+          {
+            "moduleName": "Backend.Communication.Annonce",
+            "tableName": "annonces",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\annonce.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Communication.Souggestion",
+          {
+            "moduleName": "Backend.Communication.Souggestion",
+            "tableName": "souggestions",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "titre_souggestion",
+                "type": "string"
+              },
+              {
+                "name": "contenu_souggestion",
+                "type": "string"
+              },
+              {
+                "name": "like_souggestion",
+                "type": "integer"
+              },
+              {
+                "name": "dislike_souggestion",
+                "type": "integer"
+              },
+              {
+                "name": "category",
+                "type": "string"
+              },
+              {
+                "name": "etudiant",
+                "type": "assoc",
+                "elixirType": "Backend.Accounts.Etudiant"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\souggestion.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Communication.SuggestionVote",
+          {
+            "moduleName": "Backend.Communication.SuggestionVote",
+            "tableName": "suggestion_votes",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "vote_type",
+                "type": "string"
+              },
+              {
+                "name": "utilisateur",
+                "type": "assoc",
+                "elixirType": "Backend.Accounts.Utilisateur"
+              },
+              {
+                "name": "souggestion",
+                "type": "assoc",
+                "elixirType": "Backend.Communication.Souggestion"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\suggestion_vote.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Support.Commentaire",
+          {
+            "moduleName": "Backend.Support.Commentaire",
+            "tableName": "commentaires",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "contenu_commentaires",
+                "type": "string"
+              },
+              {
+                "name": "interne_commentaires",
+                "type": "boolean"
+              },
+              {
+                "name": "ticket",
+                "type": "assoc",
+                "elixirType": "Backend.Support.Ticket"
+              },
+              {
+                "name": "utilisateur",
+                "type": "assoc",
+                "elixirType": "Backend.Accounts.Utilisateur"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\commentaire.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Support.Notification",
+          {
+            "moduleName": "Backend.Support.Notification",
+            "tableName": "notifications",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\notification.ex",
+            "line": 5
+          }
+        ],
+        [
+          "Backend.Support.Ticket",
+          {
+            "moduleName": "Backend.Support.Ticket",
+            "tableName": "tickets",
+            "fields": [
+              {
+                "name": "id",
+                "type": "id"
+              },
+              {
+                "name": "portee_ticket",
+                "type": "string"
+              },
+              {
+                "name": "referance_ticket",
+                "type": "string"
+              },
+              {
+                "name": "type_ticket",
+                "type": "string"
+              },
+              {
+                "name": "categorie_ticket",
+                "type": "string"
+              },
+              {
+                "name": "object_ticket",
+                "type": "string"
+              },
+              {
+                "name": "description_ticket",
+                "type": "string"
+              },
+              {
+                "name": "statut_ticket",
+                "type": "string"
+              },
+              {
+                "name": "priorite_ticket",
+                "type": "string"
+              },
+              {
+                "name": "note_satisfaction_ticket",
+                "type": "integer"
+              },
+              {
+                "name": "cree_le_ticket",
+                "type": "utc_datetime"
+              },
+              {
+                "name": "utilisateur",
+                "type": "assoc",
+                "elixirType": "Backend.Accounts.Utilisateur"
+              },
+              {
+                "name": "module",
+                "type": "assoc",
+                "elixirType": "Backend.Academics.Module"
+              },
+              {
+                "name": "commentaires",
+                "type": "list",
+                "elixirType": "Backend.Support.Commentaire"
+              },
+              {
+                "name": "notifications",
+                "type": "list",
+                "elixirType": "Backend.Support.Notification"
+              },
+              {
+                "name": "inserted_at",
+                "type": "naive_datetime"
+              },
+              {
+                "name": "updated_at",
+                "type": "naive_datetime"
+              }
+            ],
+            "associations": {},
+            "associationsDetailed": [],
+            "aliases": {},
+            "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\ticket.ex",
+            "line": 5
+          }
+        ]
+      ],
+      "schemasByFile": [
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\chapter.ex",
+          [
+            {
+              "moduleName": "Backend.Academics.Chapter",
+              "tableName": "chapter",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\chapter.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\enseigner.ex",
+          [
+            {
+              "moduleName": "Backend.Academics.Enseigner",
+              "tableName": "enseigner",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\enseigner.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\grade.ex",
+          [
+            {
+              "moduleName": "Backend.Academics.Grade",
+              "tableName": "grades",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\grade.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\groupe.ex",
+          [
+            {
+              "moduleName": "Backend.Academics.Groupe",
+              "tableName": "groupes",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "code_groupes",
+                  "type": "string"
+                },
+                {
+                  "name": "libele_groupes",
+                  "type": "string"
+                },
+                {
+                  "name": "annee_academique_groupes",
+                  "type": "string"
+                },
+                {
+                  "name": "filier_groupe",
+                  "type": "string"
+                },
+                {
+                  "name": "niveau_groupe",
+                  "type": "string"
+                },
+                {
+                  "name": "etudiants",
+                  "type": "list",
+                  "elixirType": "Backend.Accounts.Etudiant"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\groupe.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\module.ex",
+          [
+            {
+              "moduleName": "Backend.Academics.Module",
+              "tableName": "module",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\module.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\administration.ex",
+          [
+            {
+              "moduleName": "Backend.Accounts.Administration",
+              "tableName": "administration",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\administration.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\etudiant.ex",
+          [
+            {
+              "moduleName": "Backend.Accounts.Etudiant",
+              "tableName": "etudiants",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\etudiant.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\professeur.ex",
+          [
+            {
+              "moduleName": "Backend.Accounts.Professeur",
+              "tableName": "professeurs",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\professeur.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\role.ex",
+          [
+            {
+              "moduleName": "Backend.Accounts.Role",
+              "tableName": "roles",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\role.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\utilisateur.ex",
+          [
+            {
+              "moduleName": "Backend.Accounts.Utilisateur",
+              "tableName": "utilisateurs",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\utilisateur.ex",
+              "line": 13
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\annonce.ex",
+          [
+            {
+              "moduleName": "Backend.Communication.Annonce",
+              "tableName": "annonces",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\annonce.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\souggestion.ex",
+          [
+            {
+              "moduleName": "Backend.Communication.Souggestion",
+              "tableName": "souggestions",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "titre_souggestion",
+                  "type": "string"
+                },
+                {
+                  "name": "contenu_souggestion",
+                  "type": "string"
+                },
+                {
+                  "name": "like_souggestion",
+                  "type": "integer"
+                },
+                {
+                  "name": "dislike_souggestion",
+                  "type": "integer"
+                },
+                {
+                  "name": "category",
+                  "type": "string"
+                },
+                {
+                  "name": "etudiant",
+                  "type": "assoc",
+                  "elixirType": "Backend.Accounts.Etudiant"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\souggestion.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\suggestion_vote.ex",
+          [
+            {
+              "moduleName": "Backend.Communication.SuggestionVote",
+              "tableName": "suggestion_votes",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "vote_type",
+                  "type": "string"
+                },
+                {
+                  "name": "utilisateur",
+                  "type": "assoc",
+                  "elixirType": "Backend.Accounts.Utilisateur"
+                },
+                {
+                  "name": "souggestion",
+                  "type": "assoc",
+                  "elixirType": "Backend.Communication.Souggestion"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\suggestion_vote.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\commentaire.ex",
+          [
+            {
+              "moduleName": "Backend.Support.Commentaire",
+              "tableName": "commentaires",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "contenu_commentaires",
+                  "type": "string"
+                },
+                {
+                  "name": "interne_commentaires",
+                  "type": "boolean"
+                },
+                {
+                  "name": "ticket",
+                  "type": "assoc",
+                  "elixirType": "Backend.Support.Ticket"
+                },
+                {
+                  "name": "utilisateur",
+                  "type": "assoc",
+                  "elixirType": "Backend.Accounts.Utilisateur"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\commentaire.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\notification.ex",
+          [
+            {
+              "moduleName": "Backend.Support.Notification",
+              "tableName": "notifications",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\notification.ex",
+              "line": 5
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\ticket.ex",
+          [
+            {
+              "moduleName": "Backend.Support.Ticket",
+              "tableName": "tickets",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "id"
+                },
+                {
+                  "name": "portee_ticket",
+                  "type": "string"
+                },
+                {
+                  "name": "referance_ticket",
+                  "type": "string"
+                },
+                {
+                  "name": "type_ticket",
+                  "type": "string"
+                },
+                {
+                  "name": "categorie_ticket",
+                  "type": "string"
+                },
+                {
+                  "name": "object_ticket",
+                  "type": "string"
+                },
+                {
+                  "name": "description_ticket",
+                  "type": "string"
+                },
+                {
+                  "name": "statut_ticket",
+                  "type": "string"
+                },
+                {
+                  "name": "priorite_ticket",
+                  "type": "string"
+                },
+                {
+                  "name": "note_satisfaction_ticket",
+                  "type": "integer"
+                },
+                {
+                  "name": "cree_le_ticket",
+                  "type": "utc_datetime"
+                },
+                {
+                  "name": "utilisateur",
+                  "type": "assoc",
+                  "elixirType": "Backend.Accounts.Utilisateur"
+                },
+                {
+                  "name": "module",
+                  "type": "assoc",
+                  "elixirType": "Backend.Academics.Module"
+                },
+                {
+                  "name": "commentaires",
+                  "type": "list",
+                  "elixirType": "Backend.Support.Commentaire"
+                },
+                {
+                  "name": "notifications",
+                  "type": "list",
+                  "elixirType": "Backend.Support.Notification"
+                },
+                {
+                  "name": "inserted_at",
+                  "type": "naive_datetime"
+                },
+                {
+                  "name": "updated_at",
+                  "type": "naive_datetime"
+                }
+              ],
+              "associations": {},
+              "associationsDetailed": [],
+              "aliases": {},
+              "filePath": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\ticket.ex",
+              "line": 5
+            }
+          ]
+        ]
+      ],
+      "fileHashes": {
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\chapter.ex": "f696d0b0ee377c623c435a3de961a16cc425e72e",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\enseigner.ex": "8023f3471336bcb55a656aa74cc3007ab6c58192",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\grade.ex": "b2d56e8d18b33a6acf1cc79c28ca6e8f720195d4",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\groupe.ex": "45207719fe9ea03eac5ca7f6ac60cc95fa036e98",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\academics\\module.ex": "b4c77797b1db94547fa72ac6cc35bca5beb0803a",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\administration.ex": "b052a7e946f5e04f8d11c6ac76c8f91c42b8ac9e",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\etudiant.ex": "60d3068f065fe1085d8d9106e53ef6e857c7323f",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\professeur.ex": "ef6a38b43a83890894469d00f5c8d7dc49ad9739",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\role.ex": "0b3997112abbec615b06e13152f3ab552bddb7c7",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\accounts\\utilisateur.ex": "f64a063feead3129ea55e0bc336a03b36e1c4c3b",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\annonce.ex": "57fd32f0ddbe097b78fed8cc11f2a406ddcf28f3",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\souggestion.ex": "094771c2c8ac37a3a5089a41afb8c3224522a811",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\communication\\suggestion_vote.ex": "087ac93a9dea6b4c0b67c87c4946c22b375398eb",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\commentaire.ex": "1c04a156219afe35708d0df792a5e5fb6ad387b5",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\notification.ex": "49ce09172dce480c1e0cf3dd52aa017d4f887765",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend\\support\\ticket.ex": "1701ec9fecf75d35347a784251b5f09be72213e4"
+      },
+      "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
+    },
+    "events": {
+      "events": [
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex",
+          []
+        ]
+      ],
+      "fileHashes": {
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex": "8d0982dc02c65deab3408b4bb0591a7003313cbd"
+      },
+      "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
+    },
+    "routes": {
+      "routes": [],
+      "fileHashes": {
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\router.ex": "c88504faf12cb1e6d5af4446bed741842edcd9bb"
+      },
+      "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
+    },
+    "controllers": {
+      "rendersByFile": [
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex",
+          []
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\account_controller.ex",
+          [
+            {
+              "controllerModule": "BackendWeb.AccountController",
+              "controllerFile": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\account_controller.ex",
+              "action": "refresh_session",
+              "templateName": "utilisateur: utilisateur",
+              "assigns": [
+                "token"
+              ],
+              "assignsWithTypes": [
+                {
+                  "name": "token",
+                  "variableName": "new_token"
+                }
+              ],
+              "actionBody": "  def refresh_session(conn, %{}) do\r\n    with token when is_binary(token) <- Guardian.Plug.current_token(conn),\r\n         {:ok, utilisateur, new_token} <- Guardian.authenticate(token) do\r\n      conn\r\n      |> Plug.Conn.put_session(:id, utilisateur.id)\r\n      |> put_status(:ok)\r\n      |> render(:show, utilisateur: utilisateur, token: new_token)\r\n    else\r\n      _ ->\r\n        {:error, :invalid_credentials, message: \"Session invalide ou expirée\"}\r\n    end\r\n  end\r",
+              "line": 44
+            },
+            {
+              "controllerModule": "BackendWeb.AccountController",
+              "controllerFile": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\account_controller.ex",
+              "action": "profile",
+              "templateName": "utilisateur: utilisateur",
+              "assigns": [],
+              "assignsWithTypes": [],
+              "actionBody": "  def profile(conn, _params) do\r\n    # reload utilisateur with associations to include etudiant, professeur, groupe and role data\r\n    utilisateur =\r\n      conn.assigns.account\r\n      |> (fn a -> Accounts.get_utilisateur!(a.id) end).()\r\n      |> Backend.Repo.preload([:role, :professeur, etudiant: [:groupe]])\r\n\r\n    conn\r\n    |> put_status(:ok)\r\n    |> render(:profile, utilisateur: utilisateur)\r\n  end\r",
+              "line": 64
+            },
+            {
+              "controllerModule": "BackendWeb.AccountController",
+              "controllerFile": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\account_controller.ex",
+              "action": "authorize_user",
+              "templateName": "utilisateur: utilisateur",
+              "assigns": [
+                "token"
+              ],
+              "assignsWithTypes": [
+                {
+                  "name": "token",
+                  "variableName": "token"
+                }
+              ],
+              "actionBody": "  defp authorize_user(conn, email, password) do\r\n    with {:ok, utilisateur, token} <- Guardian.authenticate_user(email, password) do\r\n      conn\r\n      |> put_status(:ok)\r\n      |> render(:show, utilisateur: utilisateur, token: token)\r\n    end\r\n  end\r",
+              "line": 110
+            },
+            {
+              "controllerModule": "BackendWeb.AccountController",
+              "controllerFile": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\account_controller.ex",
+              "action": "update",
+              "templateName": "utilisateur: updated_utilisateur",
+              "assigns": [],
+              "assignsWithTypes": [],
+              "actionBody": "  def update(conn, %{\"account\" => account_params}) do\r\n    utilisateur = Accounts.get_utilisateur!(account_params[\"id\"])\r\n\r\n    with {:ok, %Utilisateur{} = updated_utilisateur} <-\r\n           Accounts.update_utilisateur(utilisateur, account_params) do\r\n      conn\r\n      |> put_status(:ok)\r\n      |> render(:show_update, utilisateur: updated_utilisateur)\r\n    end\r\n  end\r",
+              "line": 121
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\chapter_controller.ex",
+          []
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\delegation_controller.ex",
+          []
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\fallback_controller.ex",
+          [
+            {
+              "controllerModule": "BackendWeb.FallbackController",
+              "controllerFile": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\fallback_controller.ex",
+              "action": "call",
+              "templateName": "changeset: changeset",
+              "assigns": [],
+              "assignsWithTypes": [],
+              "actionBody": "  def call(conn, {:error, reason}) when is_binary(reason) do\r\n    conn\r\n    |> put_status(:unprocessable_entity)\r\n    |> json(%{error: reason})\r\n  end\r",
+              "line": 14
+            },
+            {
+              "controllerModule": "BackendWeb.FallbackController",
+              "controllerFile": "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\fallback_controller.ex",
+              "action": "call",
+              "templateName": "message: message",
+              "assigns": [],
+              "assignsWithTypes": [],
+              "actionBody": "  def call(conn, {:error, reason}) when is_binary(reason) do\r\n    conn\r\n    |> put_status(:unprocessable_entity)\r\n    |> json(%{error: reason})\r\n  end\r",
+              "line": 28
+            }
+          ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\grade_controller.ex",
+          []
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\meta_controller.ex",
+          []
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\module_controller.ex",
+          []
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\notification_controller.ex",
+          []
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\souggestion_controller.ex",
+          []
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\ticket_controller.ex",
+          []
+        ]
+      ],
+      "templateSummaries": [],
+      "fileHashes": {
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex": "8d0982dc02c65deab3408b4bb0591a7003313cbd",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\account_controller.ex": "daeb8f42450ad40f6983bea109cbb62265239972",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\chapter_controller.ex": "0207921911ccb97ee11763b1d0ff342b20b4bbff",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\delegation_controller.ex": "de53ddf4e3a7a0cea332e1528ceb25ab836d5b1a",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\fallback_controller.ex": "187f39bc713d29326de196400dff95334724b1e4",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\grade_controller.ex": "88fc26255b1c503301663900b7893cdf3b857e2a",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\meta_controller.ex": "5a6f434e1bb4f39653c07ae93b2a2e78106e7376",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\module_controller.ex": "a9590a01084d8440e8608700c1d5eaed7ed34da4",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\notification_controller.ex": "b3d75add750ace714821b11164f2f09fe704e6fa",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\souggestion_controller.ex": "05cacca5d528da7aa77798dcf05dae10c283411a",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\ticket_controller.ex": "27fbefd7fe8403b03c48da92d7fe2d2171e5b636"
+      },
+      "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
+    },
+    "templates": {
+      "templatesByModule": [],
+      "templatesByPath": [],
+      "moduleByFile": [],
+      "fileHashes": {},
+      "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
+    },
+    "liveview": {
+      "liveViews": [],
+      "fileHashes": {},
+      "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
+    }
+  },
+  "fileHashes": {}
+}
