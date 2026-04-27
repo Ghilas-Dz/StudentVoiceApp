@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "timestamp": 1777238267200,
+  "timestamp": 1777281942620,
   "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team",
   "registries": {
     "components": {
@@ -256,12 +256,12 @@
           ]
         ],
         [
-          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex",
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web.ex",
           []
         ]
       ],
       "fileHashes": {
-        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex": "8d0982dc02c65deab3408b4bb0591a7003313cbd"
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web.ex": "136633a8ef878b1c8f1d1d1dbd935ff00a0ef030"
       },
       "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
     },
@@ -1441,12 +1441,12 @@
     "events": {
       "events": [
         [
-          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex",
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web.ex",
           []
         ]
       ],
       "fileHashes": {
-        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex": "8d0982dc02c65deab3408b4bb0591a7003313cbd"
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web.ex": "136633a8ef878b1c8f1d1d1dbd935ff00a0ef030"
       },
       "workspaceRoot": "c:\\Users\\pc\\Desktop\\Project Team"
     },
@@ -1459,10 +1459,6 @@
     },
     "controllers": {
       "rendersByFile": [
-        [
-          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex",
-          []
-        ],
         [
           "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\account_controller.ex",
           [
@@ -1521,6 +1517,10 @@
               "line": 121
             }
           ]
+        ],
+        [
+          "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex",
+          []
         ],
         [
           "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\chapter_controller.ex",
@@ -1582,8 +1582,8 @@
       ],
       "templateSummaries": [],
       "fileHashes": {
-        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex": "8d0982dc02c65deab3408b4bb0591a7003313cbd",
         "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\account_controller.ex": "daeb8f42450ad40f6983bea109cbb62265239972",
+        "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\annonce_controller.ex": "8d0982dc02c65deab3408b4bb0591a7003313cbd",
         "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\chapter_controller.ex": "0207921911ccb97ee11763b1d0ff342b20b4bbff",
         "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\delegation_controller.ex": "de53ddf4e3a7a0cea332e1528ceb25ab836d5b1a",
         "c:\\Users\\pc\\Desktop\\Project Team\\backend\\lib\\backend_web\\controllers\\fallback_controller.ex": "187f39bc713d29326de196400dff95334724b1e4",

@@ -56,4 +56,10 @@ defmodule BackendWeb.MetaController do
     |> put_status(:ok)
     |> json(data)
   end
+
+  def health(conn, _params) do
+    conn
+    |> put_status(:ok)
+    |> json(%{status: "ok", message: "Backend is running on Render"})
+  end
 end

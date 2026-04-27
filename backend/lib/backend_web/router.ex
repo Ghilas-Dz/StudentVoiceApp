@@ -26,10 +26,17 @@ defmodule BackendWeb.Router do
   scope "/api", BackendWeb do
     pipe_through(:api)
 
+    get("/health", MetaController, :health)
     post("/etudiant/register", AccountController, :create_etudiant)
     post("/professeur/register", AccountController, :create_professeur)
     post("/login", AccountController, :login)
     get("/meta", MetaController, :index)
+  end
+
+  scope "/", BackendWeb do
+    pipe_through(:api)
+
+    get("/", MetaController, :health)
   end
 
   scope "/api/auth/etudiant", BackendWeb do
