@@ -27,11 +27,15 @@ defmodule BackendWeb.Endpoint do
     only: BackendWeb.static_paths()
   )
 
-  # CORS for local development (adjust origins in production)
+  # CORS for local development and Vercel deployments
   plug(CORSPlug,
-    origin: ["http://localhost:5173", "http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    headers: ["Content-Type", "Authorization"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      ~r/^https:\/\/.*\.vercel\.app$/
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    headers: ["Content-Type", "Authorization", "Accept", "Origin"],
     max_age: 86400,
     credentials: true
   )
